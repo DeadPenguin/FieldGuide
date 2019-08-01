@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FieldGuide.Utilities"
+             x:Class="FieldGuide.Views.SearchResults">
+    <ContentPage.Content>
+        <StackLayout Spacing="1">
+            <Grid BackgroundColor="{StaticResource BaseColorStandard}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Text="{local:Translate Result}" TextColor="{StaticResource MenuTextColor}" FontAttributes="Bold" FontSize="30" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand"
+                   Grid.Row="0" Grid.Column="0" />
+                <ImageButton Source="Return_klein.png" Grid.Row="0" Grid.Column="1" Command="{Binding ReturnCommand}" BackgroundColor="Transparent"/>
+                <!--BackgroundColor="Transparent" bei Buttons einfügen-->
+            </Grid>
+            <ListView ItemsSource="{Binding MatchingEntries}" SelectedItem="{Binding SelectedResult, Mode=TwoWay}" VerticalOptions="FillAndExpand" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="100">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Name}" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Image Grid.Column="1" Source="{Binding Source}" Aspect="AspectFit" HeightRequest="100"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

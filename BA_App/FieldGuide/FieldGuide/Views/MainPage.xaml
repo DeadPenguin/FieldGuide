@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
+             xmlns:local="clr-namespace:FieldGuide.Utilities"
+             x:Class="FieldGuide.MainPage">
+
+    <StackLayout Spacing="1">
+        <Grid BackgroundColor="{StaticResource BaseColorStandard}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label Text="{Binding Caption}" FontAttributes="Bold" FontSize="30" TextColor="{StaticResource MenuTextColor}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand"
+                   Grid.Row="0" Grid.Column="0" />
+            <ImageButton Source="Plus_klein.png" Grid.Row="0" Grid.Column="1" Command="{Binding PlusCommand}" BackgroundColor="Transparent"/>
+            <ImageButton Source="Return_klein.png" Grid.Row="0" Grid.Column="2" Command="{Binding ReturnCommand}" BackgroundColor="Transparent"/>
+            <ImageButton Source="Lupe_klein.png" Grid.Row="0" Grid.Column="3" Command="{Binding SearchCommand}" BackgroundColor="Transparent"/>
+            <ImageButton Source="Hamburger_Icon_klein.png" Grid.Row="0" Grid.Column="4" Command="{Binding MenuCommand}" BackgroundColor="Transparent"/>
+            <!--BackgroundColor="Transparent" bei Buttons einfügen-->
+        </Grid>
+        <Grid IsVisible="{Binding Menu}" VerticalOptions="FillAndExpand" RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Button Text="{local:Translate Help}" TextColor="{StaticResource MenuTextColor}" BackgroundColor="{StaticResource BaseColorLighter}" Grid.Column="0" Grid.Row="0" Command="{Binding Help}"/>
+            <!-- ggf. noch Optionen einfügen? -->
+            <Button Text="{local:Translate NewFolder}" TextColor="{StaticResource MenuTextColor}" BackgroundColor="{StaticResource BaseColorLighter}" Grid.Column="0" Grid.Row="1" Command="{Binding NewFolder}"/>
+            <Button Text="{local:Translate Import}" TextColor="{StaticResource MenuTextColor}" BackgroundColor="{StaticResource BaseColorLighter}" Grid.Column="0" Grid.Row="2" Command="{Binding Import}"/>
+        </Grid>
+        <ListView x:Name="FileSystem" IsVisible="{Binding List}" ItemsSource="{Binding Files}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Title}" Margin="10" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                            <Image Source="{Binding Icon}" Margin="0, 10" HorizontalOptions="EndAndExpand"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

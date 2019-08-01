@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FieldGuide.Utilities"
+             x:Class="FieldGuide.Modals.NewFolder"
+           xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+    <StackLayout Margin="10,10,10,10" Padding="10,10,10,10" VerticalOptions="Center" BackgroundColor="White">
+        <Label Text="{local:Translate NewFolder}" FontSize="30"/>
+        <Entry x:Name="FileName" Placeholder="{local:Translate NewFolderString}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Text="{local:Translate Accept}" Grid.Column="0" Clicked="OnAccept" BackgroundColor="{x:StaticResource BaseColorLighter}" CornerRadius="5"/>
+            <Button Text="{local:Translate Cancel}" Grid.Column="1" Clicked="OnCancel" BackgroundColor="{x:StaticResource BaseColorLighter}" CornerRadius="5"/>
+        </Grid>
+    </StackLayout>
+</pages:PopupPage>

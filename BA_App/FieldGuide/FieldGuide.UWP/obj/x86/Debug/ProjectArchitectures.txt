@@ -1,0 +1,1 @@
+C:\Users\Admi1\Desktop\FieldGuide\BA_App\FieldGuide\FieldGuide.UWP\FieldGuide.UWP.csproj;x86
